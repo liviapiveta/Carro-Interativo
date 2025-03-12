@@ -1,24 +1,44 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carro Interativo</title>
-    <link rel="stylesheet" href="style.css"> <!-- Conectando o CSS -->
+  <title>Herança em JavaScript</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Meu Carro</h1>
+  <h1>Herança em JavaScript</h1>
 
-    <div id="carro-container">
-        <img id="carro-imagem" src="imagens/carro.png" alt="Imagem do Carro">
-        <p id="carro-modelo"></p>
-        <p id="carro-cor"></p>
-        <p id="carro-velocidade">Velocidade: <span id="velocidade-valor">0</span> km/h</p>
-    </div>
+  <h2>Carro Esportivo</h2>
+  <label for="modeloEsportivo">Modelo:</label>
+  <input type="text" id="modeloEsportivo" value="Ferrari"><br><br>
+  <label for="corEsportivo">Cor:</label>
+  <input type="text" id="corEsportivo" value="Vermelho"><br><br>
+ <button onclick="criarCarroEsportivo()">Criar Carro Esportivo</button><br><br>
+  <button onclick="ligarEsportivo()">Ligar</button>
+  <button onclick="desligarEsportivo()">Desligar</button>
+  <button onclick="acelerarEsportivo()">Acelerar</button>
+  <button onclick="frearEsportivo()">Frear</button>
+  <button onclick="ativarTurbo()">Ativar Turbo</button>
+  <button onclick="desativarTurbo()">Desativar Turbo</button><br><br>
+  <div id="statusEsportivo"></div>
 
-    <button id="ligar-desligar">Ligar</button>
-    <button id="acelerar">Acelerar</button>
+  <h2>Caminhão</h2>
+  <label for="modeloCaminhao">Modelo:</label>
+  <input type="text" id="modeloCaminhao" value="Volvo"><br><br>
+  <label for="corCaminhao">Cor:</label>
+  <input type="text" id="corCaminhao" value="Azul"><br><br>
+  <label for="capacidadeCaminhao">Capacidade:</label>
+  <input type="number" id="capacidadeCaminhao" value="1000"><br><br>
+  <button onclick="criarCaminhao()">Criar Caminhão</button><br><br>
+  <button onclick="ligarCaminhao()">Ligar</button>
+  <button onclick="desligarCaminhao()">Desligar</button>
+  <button onclick="acelerarCaminhao()">Acelerar</button>
+  <button onclick="frearCaminhao()">Frear</button>
+  <label for="carga">Carga:</label>
+  <input type="number" id="carga" value="100"><br><br>
+  <button onclick="carregarCaminhao()">Carregar</button>
+  <button onclick="descarregarCaminhao()">Descarregar</button><br><br>
+  <div id="statusCaminhao"></div>
 
-    <script src="script.js"></script> <!-- Conectando o JavaScript -->
+  <script src="script.js"></script>
 </body>
 </html>

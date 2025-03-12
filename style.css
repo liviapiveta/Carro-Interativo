@@ -1,27 +1,44 @@
 body {
     font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #f0f0f0;
-}
-
-#carro-container {
+    margin: 20px;
+  }
+  
+  h1, h2 {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    margin-right: 10px;
+  }
+  
+  input[type="text"], input[type="number"] {
+    padding: 5px;
     border: 1px solid #ccc;
-    padding: 20px;
-    margin-bottom: 20px;
+    border-radius: 4px;
     text-align: center;
-    background-color: white;
-}
-
-#carro-imagem {
-    width: 200px; /* Ajuste o tamanho conforme necessário */
-    margin-bottom: 10px;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 16px;
+  }
+  
+  button {
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-    margin: 5px;
-}
+    margin-right: 5px;
+  }
+  
+  button:hover {
+    background-color: #3e8e41;
+  }
+  
+  #statusEsportivo, #statusCaminhao {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+  }
