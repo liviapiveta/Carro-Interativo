@@ -1,44 +1,92 @@
 body {
-    font-family: sans-serif;
-    margin: 20px;
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+h1, h2 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Estilos gerais para os contêineres */
+div {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #007bff; /* Azul padrão */
+  color: white;
+  padding: 10px 15px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3; /* Azul mais escuro no hover */
+}
+
+p {
+  margin-top: 10px;
+  font-style: italic;
+  color: #777;
+}
+
+/* Estilos específicos para a área de ações */
+.button-container {
+  margin-bottom: 20px;
+}
+
+/* Contêiner dos botões de ação (Ligar, Desligar, etc.) */
+.container {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para a área de exibição das informações do veículo */
+#informacoesVeiculo {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #f9f9f9;
+  line-height: 1.6;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  input[type="text"],
+  input[type="number"] {
+    width: 100%; /* Campos ocupam toda a largura em telas pequenas */
   }
-  
-  h1, h2 {
-    margin-bottom: 15px;
-  }
-  
-  label {
-    display: inline-block;
-    width: 100px;
-    text-align: right;
-    margin-right: 10px;
-  }
-  
-  input[type="text"], input[type="number"] {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    text-align: center;
-  }
-  
   button {
-    padding: 8px 12px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 5px;
+    margin-bottom: 10px; /* Espaçamento entre botões em telas pequenas */
   }
-  
-  button:hover {
-    background-color: #3e8e41;
-  }
-  
-  #statusEsportivo, #statusCaminhao {
-    margin-top: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #f9f9f9;
-  }
+}

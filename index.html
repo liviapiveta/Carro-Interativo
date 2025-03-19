@@ -1,44 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
+
 <head>
-  <title>Herança em JavaScript</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informações dos Carros</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <h1>Herança em JavaScript</h1>
+  <h1>Informações dos Carros</h1>
+
+  <h2>Carro Base</h2>
+  <div>
+    <label for="modeloBase">Modelo:</label>
+    <input type="text" id="modeloBase">
+    <label for="corBase">Cor:</label>
+    <input type="text" id="corBase">
+    <button onclick="criarCarroBase()">Criar Carro Base</button>
+    <p id="statusBase">Carro base não criado.</p>
+  </div>
 
   <h2>Carro Esportivo</h2>
-  <label for="modeloEsportivo">Modelo:</label>
-  <input type="text" id="modeloEsportivo" value="Ferrari"><br><br>
-  <label for="corEsportivo">Cor:</label>
-  <input type="text" id="corEsportivo" value="Vermelho"><br><br>
- <button onclick="criarCarroEsportivo()">Criar Carro Esportivo</button><br><br>
-  <button onclick="ligarEsportivo()">Ligar</button>
-  <button onclick="desligarEsportivo()">Desligar</button>
-  <button onclick="acelerarEsportivo()">Acelerar</button>
-  <button onclick="frearEsportivo()">Frear</button>
-  <button onclick="ativarTurbo()">Ativar Turbo</button>
-  <button onclick="desativarTurbo()">Desativar Turbo</button><br><br>
-  <div id="statusEsportivo"></div>
+  <div>
+    <label for="modeloEsportivo">Modelo:</label>
+    <input type="text" id="modeloEsportivo">
+    <label for="corEsportivo">Cor:</label>
+    <input type="text" id="corEsportivo">
+    <button onclick="criarCarroEsportivo()">Criar Carro Esportivo</button>
+    <p id="statusEsportivo">Carro esportivo não criado.</p>
+  </div>
 
   <h2>Caminhão</h2>
-  <label for="modeloCaminhao">Modelo:</label>
-  <input type="text" id="modeloCaminhao" value="Volvo"><br><br>
-  <label for="corCaminhao">Cor:</label>
-  <input type="text" id="corCaminhao" value="Azul"><br><br>
-  <label for="capacidadeCaminhao">Capacidade:</label>
-  <input type="number" id="capacidadeCaminhao" value="1000"><br><br>
-  <button onclick="criarCaminhao()">Criar Caminhão</button><br><br>
-  <button onclick="ligarCaminhao()">Ligar</button>
-  <button onclick="desligarCaminhao()">Desligar</button>
-  <button onclick="acelerarCaminhao()">Acelerar</button>
-  <button onclick="frearCaminhao()">Frear</button>
-  <label for="carga">Carga:</label>
-  <input type="number" id="carga" value="100"><br><br>
-  <button onclick="carregarCaminhao()">Carregar</button>
-  <button onclick="descarregarCaminhao()">Descarregar</button><br><br>
-  <div id="statusCaminhao"></div>
+  <div>
+    <label for="modeloCaminhao">Modelo:</label>
+    <input type="text" id="modeloCaminhao">
+    <label for="corCaminhao">Cor:</label>
+    <input type="text" id="corCaminhao">
+    <label for="capacidadeCaminhao">Capacidade de Carga:</label>
+    <input type="number" id="capacidadeCaminhao">
+    <p id="statusCaminhao">Caminhão não criado.</p>
+  </div>
+
+  <div class="button-container">
+    <button id="btnCarro">Mostrar Carro Base</button>
+    <button id="btnEsportivo">Mostrar Esportivo</button>
+    <button id="btnCaminhao">Mostrar Caminhão</button>
+  </div>
+
+  <div class="container">
+    <h2>Ações</h2>
+    <button onclick="interagir(veiculoSelecionado, 'ligar')">Ligar</button>
+    <button onclick="interagir(veiculoSelecionado, 'desligar')">Desligar</button>
+    <button onclick="interagir(veiculoSelecionado, 'acelerar')">Acelerar</button>
+    <button onclick="interagir(veiculoSelecionado, 'frear')">Frear</button>
+    <button onclick="interagir(veiculoSelecionado, 'buzinar')">Buzinar</button>
+    <button onclick="interagir(veiculoSelecionado, 'ativarTurbo')">Ativar Turbo</button>
+    <button onclick="interagir(veiculoSelecionado, 'desativarTurbo')">Desativar Turbo</button>
+    <button onclick="interagir(veiculoSelecionado, 'carregar')">Carregar</button>
+    <button onclick="interagir(veiculoSelecionado, 'descarregar')">Descarregar</button>
+  </div>
+
+  <div class="container">
+    <h2>Informações do Veículo Selecionado</h2>
+    <div id="informacoesVeiculo"></div>
+  </div>
 
   <script src="script.js"></script>
 </body>
+
 </html>
