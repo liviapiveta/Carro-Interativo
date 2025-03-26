@@ -2,71 +2,122 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Informações dos Carros</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações dos Carros</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos para as imagens */
+        .veiculo-imagem {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        /* Estilos para o indicador de status */
+        .status-ligado {
+            color: green;
+        }
+
+        .status-desligado {
+            color: red;
+        }
+
+        /* Estilos para a barra de progresso */
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #eee;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #4CAF50;
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
 </head>
 
 <body>
-  <h1>Informações dos Carros</h1>
+    <h1>Informações dos Carros</h1>
 
-  <h2>Carro Base</h2>
-  <div>
-    <label for="modeloBase">Modelo:</label>
-    <input type="text" id="modeloBase">
-    <label for="corBase">Cor:</label>
-    <input type="text" id="corBase">
-    <button onclick="criarCarroBase()">Criar Carro Base</button>
-    <p id="statusBase">Carro base não criado.</p>
-  </div>
+    <h2>Carro Base</h2>
+    <div>
+        <label for="modeloBase">Modelo:</label>
+        <input type="text" id="modeloBase">
+        <label for="corBase">Cor:</label>
+        <input type="text" id="corBase">
+        <button onclick="criarCarroBase()">Criar Carro Base</button>
+        <p id="statusBase">Carro base não criado.</p>
+    </div>
 
-  <h2>Carro Esportivo</h2>
-  <div>
-    <label for="modeloEsportivo">Modelo:</label>
-    <input type="text" id="modeloEsportivo">
-    <label for="corEsportivo">Cor:</label>
-    <input type="text" id="corEsportivo">
-    <button onclick="criarCarroEsportivo()">Criar Carro Esportivo</button>
-    <p id="statusEsportivo">Carro esportivo não criado.</p>
-  </div>
+    <h2>Carro Esportivo</h2>
+    <div>
+        <label for="modeloEsportivo">Modelo:</label>
+        <input type="text" id="modeloEsportivo">
+        <label for="corEsportivo">Cor:</label>
+        <input type="text" id="corEsportivo">
+        <button onclick="criarCarroEsportivo()">Criar Carro Esportivo</button>
+        <p id="statusEsportivo">Carro esportivo não criado.</p>
+    </div>
 
-  <h2>Caminhão</h2>
-  <div>
-    <label for="modeloCaminhao">Modelo:</label>
-    <input type="text" id="modeloCaminhao">
-    <label for="corCaminhao">Cor:</label>
-    <input type="text" id="corCaminhao">
-    <label for="capacidadeCaminhao">Capacidade de Carga:</label>
-    <input type="number" id="capacidadeCaminhao">
-    <p id="statusCaminhao">Caminhão não criado.</p>
-  </div>
+    <h2>Caminhão</h2>
+    <div>
+        <label for="modeloCaminhao">Modelo:</label>
+        <input type="text" id="modeloCaminhao">
+        <label for="corCaminhao">Cor:</label>
+        <input type="text" id="corCaminhao">
+        <label for="capacidadeCaminhao">Capacidade de Carga:</label>
+        <input type="number" id="capacidadeCaminhao">
+        <button onclick="criarCaminhao()">Criar Caminhão</button>
+        <p id="statusCaminhao">Caminhão não criado.</p>
+    </div>
 
-  <div class="button-container">
-    <button id="btnCarro">Mostrar Carro Base</button>
-    <button id="btnEsportivo">Mostrar Esportivo</button>
-    <button id="btnCaminhao">Mostrar Caminhão</button>
-  </div>
+    <div class="button-container">
+        <button id="btnCarro">Mostrar Carro Base</button>
+        <button id="btnEsportivo">Mostrar Esportivo</button>
+        <button id="btnCaminhao">Mostrar Caminhão</button>
+    </div>
 
-  <div class="container">
-    <h2>Ações</h2>
-    <button onclick="interagir(veiculoSelecionado, 'ligar')">Ligar</button>
-    <button onclick="interagir(veiculoSelecionado, 'desligar')">Desligar</button>
-    <button onclick="interagir(veiculoSelecionado, 'acelerar')">Acelerar</button>
-    <button onclick="interagir(veiculoSelecionado, 'frear')">Frear</button>
-    <button onclick="interagir(veiculoSelecionado, 'buzinar')">Buzinar</button>
-    <button onclick="interagir(veiculoSelecionado, 'ativarTurbo')">Ativar Turbo</button>
-    <button onclick="interagir(veiculoSelecionado, 'desativarTurbo')">Desativar Turbo</button>
-    <button onclick="interagir(veiculoSelecionado, 'carregar')">Carregar</button>
-    <button onclick="interagir(veiculoSelecionado, 'descarregar')">Descarregar</button>
-  </div>
+    <div class="container">
+        <h2>Ações</h2>
+        <button onclick="interagir(veiculoSelecionado, 'ligar')">Ligar</button>
+        <button onclick="interagir(veiculoSelecionado, 'desligar')">Desligar</button>
+        <button onclick="interagir(veiculoSelecionado, 'acelerar')">Acelerar</button>
+        <button onclick="interagir(veiculoSelecionado, 'frear')">Frear</button>
+        <button onclick="interagir(veiculoSelecionado, 'buzinar')">Buzinar</button>
+        <button onclick="interagir(veiculoSelecionado, 'ativarTurbo')">Ativar Turbo</button>
+        <button onclick="interagir(veiculoSelecionado, 'desativarTurbo')">Desativar Turbo</button>
+        <button onclick="interagir(veiculoSelecionado, 'carregar')">Carregar</button>
+        <button onclick="interagir(veiculoSelecionado, 'descarregar')">Descarregar</button>
+    </div>
 
-  <div class="container">
-    <h2>Informações do Veículo Selecionado</h2>
-    <div id="informacoesVeiculo"></div>
-  </div>
+    <div class="container">
+        <h2>Informações do Veículo Selecionado</h2>
+        <img id="imagemVeiculo" src="" alt="Imagem do Veículo" class="veiculo-imagem" style="display: none;">
+        <div id="informacoesVeiculo"></div>
+        <!-- Barra de progresso para a velocidade -->
+        <div class="progress-bar">
+            <div class="progress" id="velocidadeProgress">
+                <span id="velocidadeTexto">0 km/h</span>
+            </div>
+        </div>
+        <!-- Status do veículo (Ligado/Desligado) -->
+        <p>Status: <span id="statusVeiculo" class="status-desligado">Desligado</span></p>
+    </div>
 
-  <script src="script.js"></script>
+    <!-- Elementos de áudio -->
+    <audio id="somBuzina" src="sounds/buzina.mp3" preload="auto"></audio>
+    <audio id="somAcelerar" src="sounds/acelerar.mp3" preload="auto"></audio>
+    <audio id="somFrear" src="sounds/frear.mp3" preload="auto"></audio>
+    <audio id="somLigar" src="sounds/ligar.mp3" preload="auto"></audio>
+    <audio id="somDesligar" src="sounds/desligar.mp3" preload="auto"></audio>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
