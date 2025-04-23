@@ -22,9 +22,8 @@ Para executar este projeto em sua máquina local, siga estas etapas:
 
 1.  **Clone o repositório:**
     ```bash
-    git clone https://github.com/seu-usuario/garagem-inteligente.git
+    [git clone https://github.com/seu-usuario/garagem-inteligente.git](https://github.com/liviapiveta/Carro-Interativo/tree/main)
     ```
-    *(Substitua `https://github.com/seu-usuario/garagem-inteligente.git` pelo URL real do seu repositório)*
 
 2.  **Navegue até o diretório do projeto:**
     ```bash
