@@ -1,50 +1,75 @@
-/* Reset básico e estilos gerais */
+/* --- Reset Básico e Estilos Globais --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte mais moderna */
-  margin: 20px;
-  background-color: #f0f2f5; /* Fundo ligeiramente diferente */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
   color: #333;
-  line-height: 1.6; /* Melhor legibilidade */
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Garante que o body ocupe a altura toda */
 }
 
 h1, h2, h3 {
-  color: #1c1e21; /* Cor mais escura para títulos */
-  margin-top: 1.5em;
+  color: #1c1e21;
   margin-bottom: 0.8em;
 }
+
 h1 {
   text-align: center;
-  color: #0056b3; /* Azul escuro para o título principal */
-  margin-bottom: 1em;
+  color: #fff;
+  padding: 15px 0;
 }
+
 h2 {
-  border-bottom: 2px solid #007bff; /* Linha abaixo dos H2 */
+  border-bottom: 2px solid #007bff;
   padding-bottom: 5px;
+  margin-top: 1em; /* Espaço antes de H2 */
 }
+
 h3 {
   color: #444;
+  margin-top: 1.2em;
 }
 
-/* Estilos para os contêineres principais */
-div.container, div.creation-section {
-  background-color: #fff;
-  padding: 25px; /* Mais padding */
-  margin-bottom: 25px;
-  border-radius: 8px; /* Bordas mais arredondadas */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
-  border: 1px solid #ddd; /* Borda sutil */
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 18px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, box-shadow 0.2s ease;
+  vertical-align: middle;
 }
 
-/* Estilos para a seção de criação de veículos */
-.creation-section {
-  border-color: #e0e0e0;
+button:hover {
+  background-color: #0056b3;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-/* Estilos para labels e inputs */
+button:active {
+  background-color: #004085;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
 label {
   display: block;
   margin-bottom: 6px;
-  font-weight: 600; /* Labels um pouco mais fortes */
+  font-weight: 600;
   color: #555;
   font-size: 0.95em;
 }
@@ -52,65 +77,131 @@ label {
 input[type="text"],
 input[type="number"],
 input[type="date"],
+select,
 textarea {
   width: 100%;
-  padding: 10px; /* Inputs mais altos */
-  margin-bottom: 15px; /* Mais espaço abaixo */
+  padding: 10px;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
   font-size: 1em;
+  background-color: #fff; /* Garante fundo branco */
 }
-input:focus, textarea:focus {
+
+input:focus, select:focus, textarea:focus {
   border-color: #007bff;
   outline: none;
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
 textarea {
-  resize: vertical; /* Permitir redimensionamento vertical */
+  resize: vertical;
   min-height: 70px;
 }
 
-/* Estilos gerais para botões */
-button {
+/* --- Layout Principal --- */
+header {
+  background-color: #0056b3; /* Azul escuro */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  position: sticky; /* Mantém no topo ao rolar */
+  top: 0;
+  z-index: 1000;
+}
+
+.app-container {
+  display: flex;
+  flex-grow: 1; /* Ocupa o espaço restante */
+}
+
+/* --- Barra Lateral de Navegação --- */
+.sidebar {
+  width: 220px; /* Largura fixa */
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  border-right: 1px solid #ddd;
+  flex-shrink: 0; /* Não encolhe */
+}
+
+.sidebar h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.3em;
+  color: #0056b3;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin-bottom: 25px;
+}
+
+.sidebar li a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar li a:hover {
+  background-color: #e9ecef;
+  color: #000;
+}
+
+.sidebar li a.active {
   background-color: #007bff;
   color: white;
-  padding: 10px 18px; /* Padding ligeiramente ajustado */
-  margin-right: 8px;
-  margin-bottom: 8px; /* Espaçamento inferior para botões */
-  border: none;
-  border-radius: 5px; /* Bordas ligeiramente mais arredondadas */
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease, box-shadow 0.2s ease;
-  vertical-align: middle; /* Alinha melhor com outros elementos inline */
+  font-weight: bold;
 }
 
-button:hover {
-  background-color: #0056b3;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}
-button:active {
-  background-color: #004085; /* Cor ao clicar */
-}
-
-/* Parágrafos de status na criação */
-.creation-section p {
-  margin-top: 10px;
-  font-style: italic;
-  color: #007bff; /* Status em azul */
+/* --- Área de Status Global (Sidebar) --- */
+.status-area {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f8f9fa;
   font-size: 0.9em;
+  color: #555;
+}
+.status-area.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #f5c6cb;
+}
+.status-area.success {
+  background-color: #d4edda;
+  color: #155724;
+  border-color: #c3e6cb;
 }
 
-/* ---- ESTILOS PARA A LISTA DE VEÍCULOS ---- */
+
+/* --- Área de Conteúdo Principal --- */
+main#mainContent {
+  flex-grow: 1; /* Ocupa todo o espaço restante */
+  padding: 25px;
+  overflow-y: auto; /* Barra de rolagem se necessário */
+}
+
+.content-view {
+  background-color: #fff;
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+}
+
+/* --- View: Minha Garagem --- */
 #listaVeiculos {
   border: 1px solid #ccc;
   padding: 10px;
   background-color: #f9f9f9;
-  max-height: 250px; /* Aumenta altura máxima */
+  max-height: 400px; /* Ajuste conforme necessário */
   overflow-y: auto;
-  margin-bottom: 20px;
+  margin-top: 15px;
   border-radius: 5px;
 }
 #listaVeiculos p { /* Estilo para "Nenhum veículo..." */
@@ -120,257 +211,340 @@ button:active {
   margin: 10px 0;
 }
 .veiculo-item-lista {
-  padding: 10px 12px;
+  padding: 12px 15px; /* Mais padding */
   cursor: pointer;
   border-bottom: 1px solid #eee;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, border-left 0.2s ease;
+  display: flex; /* Para alinhar ícone e texto */
+  align-items: center;
+  gap: 10px; /* Espaço entre ícone e texto */
 }
 .veiculo-item-lista:last-child {
   border-bottom: none;
 }
 .veiculo-item-lista:hover {
-  background-color: #e9ecef; /* Hover mais claro */
+  background-color: #e9ecef;
 }
-/* Classe para o item selecionado (deve ser adicionada/removida via JS) */
-.veiculo-item-lista.selected {
-  background-color: #cfe2ff; /* Azul claro para seleção */
-  font-weight: bold;
-  color: #004085; /* Cor de texto para item selecionado */
-  border-left: 4px solid #007bff; /* Indicador visual esquerdo */
-  padding-left: 8px; /* Ajusta padding após adicionar borda */
+/* Adiciona ícone baseado no tipo (usando ::before) */
+.veiculo-item-lista[data-tipo="carro"]::before { content: "🚗"; }
+.veiculo-item-lista[data-tipo="esportivo"]::before { content: "🏎️"; } /* Emoji de carro de corrida */
+.veiculo-item-lista[data-tipo="caminhao"]::before { content: "🚚"; }
+
+
+/* --- View: Adicionar Veículo --- */
+#formAdicionarVeiculo {
+  max-width: 500px; /* Limita largura do form */
+}
+#formAdicionarVeiculo label {
+  margin-top: 10px;
+}
+#formAdicionarVeiculo button[type="submit"] {
+  margin-top: 20px;
+}
+.form-status {
+  margin-top: 10px;
+  font-style: italic;
+  color: #007bff;
+  font-size: 0.9em;
+  min-height: 1.2em; /* Reserva espaço */
 }
 
-/* ---- ESTILOS PARA A ÁREA DO VEÍCULO SELECIONADO ---- */
-#areaVeiculoSelecionado {
-  border-top: 3px solid #007bff; /* Destaque visual */
+/* --- View: Detalhes do Veículo --- */
+.back-button {
+  background-color: #6c757d;
+  margin-bottom: 20px;
+  float: right; /* Posiciona à direita */
+}
+.back-button:hover {
+  background-color: #5a6268;
 }
 
-/* Imagem do veículo */
+.detalhes-container {
+  clear: both; /* Limpa o float do botão voltar */
+  margin-top: 10px;
+}
+
 .veiculo-imagem {
-  max-width: 250px; /* Imagem um pouco maior */
+  max-width: 250px;
   height: auto;
-  margin-bottom: 15px;
-  display: block; /* Garante que ocupa a própria linha */
-  margin-left: auto; /* Centraliza se o container for maior */
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
   margin-right: auto;
   border-radius: 5px;
   border: 1px solid #eee;
+  background-color: #f8f9fa; /* Fundo claro para imagem */
 }
 
-/* Informações do veículo */
 #informacoesVeiculo {
   border: 1px solid #eee;
   padding: 15px;
-  margin-top: 15px;
-  margin-bottom: 15px; /* Adiciona espaço abaixo */
+  margin-bottom: 15px;
   background-color: #fdfdfd;
   border-radius: 5px;
+  font-size: 1.05em; /* Texto ligeiramente maior */
 }
 #informacoesVeiculo br {
-  margin-bottom: 5px; /* Pequeno espaço após cada <br> */
+  display: block; /* Garante que <br> cause quebra de linha */
+  content: "";
+  margin-top: 6px; /* Espaço após cada linha de informação */
 }
 
 /* Status Ligado/Desligado */
 #statusVeiculo {
   font-weight: bold;
-  padding: 3px 8px;
-  border-radius: 4px;
-  color: white; /* Texto branco para melhor contraste */
+  padding: 4px 10px; /* Mais padding */
+  border-radius: 15px; /* Mais arredondado */
+  color: white;
+  font-size: 0.9em;
+  display: inline-block;
+  min-width: 80px; /* Largura mínima */
+  text-align: center;
 }
-.status-ligado {
-  background-color: #28a745; /* Verde */
-}
-.status-desligado {
-  background-color: #dc3545; /* Vermelho */
-}
+.status-ligado { background-color: #28a745; } /* Verde */
+.status-desligado { background-color: #dc3545; } /* Vermelho */
 
 /* Barra de Progresso da Velocidade */
 .progress-bar {
   width: 100%;
-  height: 25px;
-  background-color: #e9ecef; /* Fundo mais claro */
-  border-radius: 5px;
-  margin-bottom: 15px; /* Mais espaço */
+  height: 28px; /* Um pouco mais alta */
+  background-color: #e9ecef;
+  border-radius: 15px; /* Mais arredondado */
+  margin: 20px 0; /* Mais espaço vertical */
   overflow: hidden;
   position: relative;
   border: 1px solid #ccc;
 }
 .progress {
   height: 100%;
-  background-color: #007bff; /* Azul para progresso */
-  border-radius: 5px 0 0 5px; /* Arredonda só a ponta esquerda */
+  background: linear-gradient(to right, #007bff, #0056b3); /* Gradiente */
+  border-radius: 15px;
   width: 0%;
-  transition: width 0.4s ease-out; /* Transição mais suave */
+  transition: width 0.4s ease-out;
   display: flex;
   align-items: center;
-  justify-content: center; /* Centraliza texto na barra */
+  justify-content: center;
   color: white;
   font-weight: bold;
   font-size: 14px;
-  /* padding-left removido para centralizar */
-  box-sizing: border-box;
+  position: relative; /* Para z-index se necessário */
 }
-.progress span#velocidadeTexto { /* Estilo para o texto dentro da barra */
-   position: absolute; /* Posiciona sobre a barra */
-   width: 100%; /* Ocupa toda a largura */
-   text-align: center;
-   left: 0;
-   color: #333; /* Cor escura para contraste com fundo claro */
-   mix-blend-mode: difference; /* Tenta fazer o texto visível sobre a barra azul */
-   filter: invert(1) grayscale(1) contrast(9); /* Alternativa para visibilidade */
-   /* Se o texto não ficar bom, pode-se colocar fora da barra */
+.progress span#velocidadeTexto {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  left: 0;
+  color: #333; /* Cor escura */
+  mix-blend-mode: difference; /* Tenta contraste */
+  filter: invert(1) grayscale(1) contrast(9); /* Alternativa */
+  z-index: 2; /* Garante que fique sobre a barra azul */
 }
-
 
 /* Contêiner dos botões de ação */
 .button-container {
-  margin-top: 20px; /* Espaço acima dos botões de ação */
+  margin-top: 25px;
   padding-top: 15px;
   border-top: 1px solid #eee;
 }
 .button-container h3 {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+}
+/* Esconde botões específicos por padrão (JS controla) */
+#btnTurboOn, #btnTurboOff, #btnCarregar, #btnDescarregar {
+  display: none;
 }
 
-/* ---- ESTILOS PARA MANUTENÇÃO E AGENDAMENTO ---- */
-.manutencao-container,
-.agendamento-container {
-  margin-top: 30px; /* Mais espaço */
-  border-top: 1px solid #ddd;
+/* Contêiner para Histórico e Agendamentos */
+.manutencao-agendamento-container {
+  display: grid; /* Usa grid para duas colunas */
+  grid-template-columns: 1fr 1fr; /* Duas colunas de largura igual */
+  gap: 30px; /* Espaço entre as colunas */
+  margin-top: 30px;
   padding-top: 20px;
+  border-top: 1px solid #ddd;
 }
 
 .manutencao-container h3,
-.agendamento-container h3 {
-  margin-bottom: 15px; /* Espaço abaixo dos títulos da seção */
-  color: #0056b3; /* Azul escuro */
+.agendamento-futuro-container h3 {
+  margin-top: 0; /* Remove margem superior dos H3 dentro do grid */
+  margin-bottom: 15px;
+  color: #0056b3;
 }
 
 /* Itens de histórico e agendamento */
 .manutencao-item,
 .agendamento-item {
-  background-color: #f8f9fa; /* Fundo claro */
-  padding: 12px; /* Mais padding */
+  background-color: #f8f9fa;
+  padding: 12px;
   margin-bottom: 10px;
   border-radius: 4px;
-  border: 1px solid #e9ecef; /* Borda bem clara */
+  border-left: 4px solid #007bff; /* Destaque à esquerda */
   font-size: 0.95em;
   line-height: 1.5;
-  position: relative; /* Para possíveis ícones ou detalhes */
+  position: relative;
 }
-.agendamento-item::before { /* Adiciona um ícone de calendário (requer Font Awesome ou similar, ou usar emoji) */
-   content: "📅 "; /* Emoji como exemplo */
-   margin-right: 5px;
+.agendamento-item {
+  border-left-color: #ffc107; /* Amarelo para agendamentos */
 }
-.manutencao-item::before { /* Adiciona um ícone de ferramenta */
-   content: "🔧 "; /* Emoji como exemplo */
-   margin-right: 5px;
-}
-
-/* Estilo para agendamentos passados (adicionar classe via JS) */
 .agendamento-item.passado {
-  color: #6c757d; /* Cinza */
+  border-left-color: #6c757d; /* Cinza para passados */
+  color: #6c757d;
   text-decoration: line-through;
-  background-color: #e9ecef; /* Fundo ligeiramente diferente */
-}
-.agendamento-item.passado::before {
-  opacity: 0.6;
+  background-color: #e9ecef;
 }
 
-/* Formulário de Agendamento */
+/* Formulário de Agendamento/Registro */
+.agendamento-container {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px dashed #007bff;
+}
+.agendamento-container h3 {
+  color: #0056b3;
+}
 #formularioAgendamento {
-  margin-top: 20px;
-  padding: 25px;
-  border: 1px dashed #007bff; /* Borda tracejada azul */
-  border-radius: 8px;
+  margin-top: 15px;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 5px;
   background-color: #f8f9fa;
 }
 #formularioAgendamento label {
   display: inline-block;
-  width: 130px; /* Aumenta largura do label */
+  width: 110px; /* Largura fixa para labels */
   margin-bottom: 12px;
-  vertical-align: top; /* Melhor alinhamento com textarea */
-  font-weight: normal;
+  vertical-align: top;
 }
 #formularioAgendamento input[type="date"],
 #formularioAgendamento input[type="text"],
 #formularioAgendamento input[type="number"],
 #formularioAgendamento textarea {
-  width: calc(100% - 150px); /* Ajusta cálculo para novo label/padding */
-  display: inline-block; /* Permite alinhar com label */
-  vertical-align: top; /* Alinha inputs com labels */
-  margin-left: 10px; /* Espaço entre label e input */
+  width: calc(100% - 130px); /* Largura restante */
+  display: inline-block;
+  margin-left: 10px; /* Espaço label -> input */
+}
+#formularioAgendamento textarea {
+  vertical-align: top; /* Alinha com label */
 }
 #formularioAgendamento button {
   margin-top: 15px;
-  margin-left: 140px; /* Alinha botão com início dos inputs */
+  margin-left: 120px; /* Alinha botões com início dos inputs */
 }
-/* Espaçamento entre os botões do formulário */
 #formularioAgendamento button[type="button"] {
-  background-color: #6c757d; /* Cinza para botão secundário */
+  background-color: #28a745; /* Verde para registrar */
 }
 #formularioAgendamento button[type="button"]:hover {
-  background-color: #5a6268;
+  background-color: #218838;
 }
 
-/* ---- CLASSE UTILITÁRIA ---- */
+/* --- Classes Utilitárias --- */
 .hidden {
-  display: none !important; /* Garante que vai esconder */
+  display: none !important;
 }
 
+/* --- Responsividade --- */
+@media (max-width: 992px) {
+  .app-container {
+      flex-direction: column; /* Empilha sidebar e main */
+  }
+  .sidebar {
+      width: 100%; /* Ocupa largura total */
+      height: auto; /* Altura automática */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-right: none;
+      border-bottom: 1px solid #ddd;
+      display: flex; /* Organiza itens da sidebar */
+      align-items: center;
+      padding: 10px 15px;
+      flex-wrap: wrap; /* Permite quebrar linha */
+  }
+  .sidebar h2 {
+      margin: 0 20px 0 0; /* Espaço à direita do título */
+      font-size: 1.2em;
+  }
+  .sidebar ul {
+      display: flex;
+      margin: 0;
+      flex-grow: 1; /* Ocupa espaço */
+  }
+  .sidebar li a {
+      padding: 8px 12px;
+      margin-bottom: 0;
+      margin-right: 5px; /* Espaço entre links */
+  }
+  .status-area {
+      width: 100%; /* Ocupa linha se quebrar */
+      margin-top: 10px;
+      text-align: center;
+  }
 
-/* ---- RESPONSIVIDADE ---- */
+  .manutencao-agendamento-container {
+      grid-template-columns: 1fr; /* Uma coluna */
+      gap: 20px;
+  }
+}
+
 @media (max-width: 768px) {
-   h1 { font-size: 1.8em; }
-   h2 { font-size: 1.4em; }
+  h1 { font-size: 1.5em; padding: 10px 0; }
+  main#mainContent { padding: 15px; }
+  .content-view { padding: 20px; }
+  .veiculo-imagem { max-width: 200px; }
 
-  div.container, div.creation-section {
-      padding: 15px;
+  #formularioAgendamento label {
+      width: 100%;
+      margin-bottom: 3px;
+  }
+  #formularioAgendamento input[type="date"],
+  #formularioAgendamento input[type="text"],
+  #formularioAgendamento input[type="number"],
+  #formularioAgendamento textarea {
+      width: 100%;
+      margin-left: 0;
+      display: block;
+  }
+  #formularioAgendamento button {
+      margin-left: 0;
+      width: calc(50% - 4px); /* Dois botões por linha */
+  }
+  #formularioAgendamento button:last-of-type{
+      margin-left: 8px;
   }
 
-  .veiculo-imagem {
-      max-width: 200px;
+  .button-container button {
+      width: calc(50% - 12px); /* Dois botões de ação por linha */
   }
-
-   #formularioAgendamento label {
-       width: 100%; /* Labels ocupam linha inteira */
-       margin-bottom: 3px;
-   }
-   #formularioAgendamento input[type="date"],
-   #formularioAgendamento input[type="text"],
-   #formularioAgendamento input[type="number"],
-   #formularioAgendamento textarea {
-       width: 100%; /* Inputs ocupam linha inteira */
-       margin-left: 0; /* Remove margem esquerda */
-       display: block; /* Garante quebra de linha */
-   }
-    #formularioAgendamento button {
-        margin-left: 0; /* Remove margem dos botões */
-        width: 100%; /* Botões ocupam largura total */
-        box-sizing: border-box;
-    }
-    #formularioAgendamento button:last-of-type {
-         margin-top: 5px; /* Espaço entre os dois botões do form */
-     }
-
-     .button-container button { /* Botões de ação */
-         width: calc(50% - 12px); /* Dois botões por linha */
-         margin-right: 8px;
-     }
 }
 
 @media (max-width: 480px) {
-  body { margin: 10px; }
-  h1 { font-size: 1.5em; }
+  h1 { font-size: 1.3em; }
   h2 { font-size: 1.2em; }
+  .sidebar { padding: 10px; }
+  .sidebar h2 { margin-right: 10px; font-size: 1.1em; }
+  .sidebar li a { padding: 6px 8px; font-size: 0.9em; }
 
   button { /* Botões gerais */
-      width: 100%; /* Um botão por linha */
+      width: 100%;
       margin-right: 0;
       margin-bottom: 10px;
+      font-size: 15px;
+      padding: 12px 15px; /* Aumenta padding para toque */
   }
   .button-container button { /* Botões de ação */
      width: 100%;
      margin-right: 0;
+  }
+  #formularioAgendamento button {
+      width: 100%;
+      margin-left: 0;
+  }
+   #formularioAgendamento button:last-of-type{
+       margin-left: 0;
+       margin-top: 5px;
+   }
+  .back-button {
+      width: auto; /* Botão voltar não ocupa tela toda */
+      float: none;
+      display: block;
+      margin-bottom: 15px;
   }
 }
