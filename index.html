@@ -4,116 +4,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informações dos Carros e Manutenção</title> 
-    <link rel="stylesheet" href="style.css">
-
+    <title>Garagem Inteligente - Interface Unificada</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <h1>Garagem Inteligente</h1>
+    <header>
+        <h1>Garagem Inteligente</h1>
+    </header>
 
-    <h2>Criar Veículos</h2>
-
-    <div class="creation-section">
-        <h3>Carro Base</h3>
-        <label for="modeloBase">Modelo:</label>
-        <input type="text" id="modeloBase">
-        <label for="corBase">Cor:</label>
-        <input type="text" id="corBase">
-        <button onclick="criarVeiculo('carro')">Criar Carro Base</button>
-        <p id="statusCarro">Carro base não criado.</p>
-    </div>
-
-
-     <div class="creation-section">
-        <h3>Carro Esportivo</h3>
-        <label for="modeloEsportivo">Modelo:</label>
-        <input type="text" id="modeloEsportivo">
-        <label for="corEsportivo">Cor:</label>
-        <input type="text" id="corEsportivo">
-        <button onclick="criarVeiculo('esportivo')">Criar Carro Esportivo</button>
-        <p id="statusEsportivo">Carro esportivo não criado.</p>
-     </div>
-
-
-     <div class="creation-section">
-        <h3>Caminhão</h3>
-        <label for="modeloCaminhao">Modelo:</label>
-        <input type="text" id="modeloCaminhao">
-        <label for="corCaminhao">Cor:</label>
-        <input type="text" id="corCaminhao">
-        <label for="capacidadeCaminhao">Capacidade (kg):</label>
-        <input type="number" id="capacidadeCaminhao">
-        <button onclick="criarVeiculo('caminhao')">Criar Caminhão</button>
-        <p id="statusCaminhao">Caminhão não criado.</p>
-     </div>
-
-
-
-    <div class="container">
-        <h2>Veículos na Garagem</h2>
-        <div id="listaVeiculos">
-            <p>Nenhum veículo na garagem.</p>
-        </div>
-    </div>
-
-
-    <div id="areaVeiculoSelecionado" class="container hidden"> 
-        <h2>Veículo Selecionado</h2>
-        <img id="imagemVeiculo" src="" alt="Imagem do Veículo" class="veiculo-imagem" style="display: none;">
-        <div id="informacoesVeiculo"></div>
-        <!-- Barra de progresso para a velocidade -->
-        <div class="progress-bar">
-            <div class="progress" id="velocidadeProgress">
-                <span id="velocidadeTexto">0 km/h</span>
-            </div>
-        </div>
-        <!-- Status do veículo (Ligado/Desligado) -->
-        <p>Status: <span id="statusVeiculo" class="status-desligado">Desligado</span></p>
-
-        <div class="button-container">
-            <h3>Ações</h3>
-            <button onclick="interagir('ligar')">Ligar</button>
-            <button onclick="interagir('desligar')">Desligar</button>
-            <button onclick="interagir('acelerar')">Acelerar</button>
-            <button onclick="interagir('frear')">Frear</button>
-            <button onclick="interagir('buzinar')">Buzinar</button>
-            <button id="btnTurboOn" onclick="interagir('ativarTurbo')">Ativar Turbo</button>
-            <button id="btnTurboOff" onclick="interagir('desativarTurbo')">Desativar Turbo</button>
-            <button id="btnCarregar" onclick="interagir('carregar')">Carregar</button>
-            <button id="btnDescarregar" onclick="interagir('descarregar')">Descarregar</button>
-        </div>
-
-
-        <div class="manutencao-container">
-            <h3>Histórico de Manutenção</h3>
-            <div id="historicoManutencao">
-                <p>Nenhuma manutenção registrada.</p>
-            </div>
-             <h3>Agendamentos Futuros</h3>
-             <div id="agendamentosFuturos">
-                 <p>Nenhum agendamento futuro.</p>
+    <div class="app-container">
+        <nav class="sidebar">
+            <h2>Navegação</h2>
+            <ul>
+                <li><a href="#" id="navGaragem" class="active">Minha Garagem</a></li>
+                <li><a href="#" id="navAdicionar">Adicionar Veículo</a></li>
+            </ul>
+             <div id="statusGlobal" class="status-area">
+                Carregando sistema...
              </div>
-        </div>
+        </nav>
+
+        <main id="mainContent">
+            <!-- O conteúdo será carregado aqui pelo JavaScript -->
+            <div id="viewGaragem" class="content-view">
+                 <h2>Minha Garagem</h2>
+                 <div id="listaVeiculos">
+                     <p>Nenhum veículo na garagem.</p>
+                 </div>
+            </div>
+
+            <div id="viewAdicionar" class="content-view hidden">
+                <h2>Adicionar Novo Veículo</h2>
+                <form id="formAdicionarVeiculo" onsubmit="criarVeiculoUnificado(event)">
+                     <label for="addTipoVeiculo">Tipo:</label>
+                     <select id="addTipoVeiculo" required>
+                         <option value="carro">Carro Base</option>
+                         <option value="esportivo">Carro Esportivo</option>
+                         <option value="caminhao">Caminhão</option>
+                     </select>
+
+                     <label for="addModelo">Modelo:</label>
+                     <input type="text" id="addModelo" required>
+
+                     <label for="addCor">Cor:</label>
+                     <input type="text" id="addCor" required>
+
+                     <div id="camposCaminhao" class="hidden">
+                         <label for="addCapacidade">Capacidade (kg):</label>
+                         <input type="number" id="addCapacidade" min="1">
+                     </div>
+
+                     <button type="submit">Adicionar Veículo</button>
+                     <p id="statusAdicionar" class="form-status"></p>
+                 </form>
+            </div>
+
+            <div id="viewDetalhesVeiculo" class="content-view hidden">
+                <!-- Botão para voltar à lista -->
+                <button id="btnVoltarGaragem" class="back-button">&larr; Voltar para Garagem</button>
+
+                <h2>Detalhes do Veículo</h2>
+                <div class="detalhes-container">
+                     <img id="imagemVeiculo" src="" alt="Imagem do Veículo" class="veiculo-imagem" style="display: none;">
+                     <div id="informacoesVeiculo"></div>
+
+                     <!-- Barra de progresso para a velocidade -->
+                     <div class="progress-bar">
+                         <div class="progress" id="velocidadeProgress">
+                             <span id="velocidadeTexto">0 km/h</span>
+                         </div>
+                     </div>
+                     <!-- Status do veículo (Ligado/Desligado) -->
+                     <p>Status: <span id="statusVeiculo" class="status-desligado">Desligado</span></p>
+
+                     <div class="button-container">
+                         <h3>Ações</h3>
+                         <button onclick="interagir('ligar')">Ligar</button>
+                         <button onclick="interagir('desligar')">Desligar</button>
+                         <button onclick="interagir('acelerar')">Acelerar</button>
+                         <button onclick="interagir('frear')">Frear</button>
+                         <button onclick="interagir('buzinar')">Buzinar</button>
+                         <!-- Botões específicos -->
+                         <button id="btnTurboOn" onclick="interagir('ativarTurbo')" class="hidden">Ativar Turbo</button>
+                         <button id="btnTurboOff" onclick="interagir('desativarTurbo')" class="hidden">Desativar Turbo</button>
+                         <button id="btnCarregar" onclick="interagir('carregar')" class="hidden">Carregar</button>
+                         <button id="btnDescarregar" onclick="interagir('descarregar')" class="hidden">Descarregar</button>
+                     </div>
+
+                     <div class="manutencao-agendamento-container">
+                        <div class="manutencao-container">
+                             <h3>Histórico de Manutenção</h3>
+                             <div id="historicoManutencao">
+                                 <p>Nenhuma manutenção registrada.</p>
+                             </div>
+                        </div>
+                         <div class="agendamento-futuro-container">
+                              <h3>Agendamentos Futuros</h3>
+                              <div id="agendamentosFuturos">
+                                  <p>Nenhum agendamento futuro.</p>
+                              </div>
+                         </div>
+                     </div>
 
 
-        <div class="agendamento-container">
-            <h3>Agendar Manutenção</h3>
-            <form id="formularioAgendamento" onsubmit="agendarManutencao(event)">
-                <label for="dataAgendamento">Data:</label>
-                <input type="date" id="dataAgendamento" required><br>
-                <label for="tipoAgendamento">Tipo Serviço:</label>
-                <input type="text" id="tipoAgendamento" required><br>
-                <label for="custoAgendamento">Custo (R$):</label>
-                <input type="number" id="custoAgendamento" step="0.01" min="0"><br> <!-- Opcional ao agendar, obrigatório ao registrar -->
-                 <label for="descricaoAgendamento">Descrição:</label>
-                 <textarea id="descricaoAgendamento" rows="3"></textarea><br>
-                 <button type="submit">Agendar</button>
-                 <button type="button" onclick="adicionarManutencaoRealizada()">Registrar Manutenção Realizada</button>
-             </form>
-        </div>
+                     <div class="agendamento-container">
+                         <h3>Agendar / Registrar Manutenção</h3>
+                         <form id="formularioAgendamento" onsubmit="agendarManutencao(event)">
+                             <label for="dataAgendamento">Data:</label>
+                             <input type="date" id="dataAgendamento" required><br>
+                             <label for="tipoAgendamento">Tipo Serviço:</label>
+                             <input type="text" id="tipoAgendamento" required><br>
+                             <label for="custoAgendamento">Custo (R$):</label>
+                             <input type="number" id="custoAgendamento" step="0.01" min="0"><br> <!-- Opcional ao agendar, obrigatório ao registrar -->
+                              <label for="descricaoAgendamento">Descrição:</label>
+                              <textarea id="descricaoAgendamento" rows="3"></textarea><br>
+                              <button type="submit">Agendar</button>
+                              <button type="button" onclick="adicionarManutencaoRealizada()">Registrar Manutenção Realizada</button>
+                          </form>
+                     </div>
+                </div>
+            </div>
+
+        </main>
     </div>
-
 
     <!-- Elementos de áudio -->
     <audio id="somBuzina" src="sounds/buzina.mp3" preload="auto"></audio>
@@ -122,7 +136,7 @@
     <audio id="somLigar" src="sounds/ligar.mp3" preload="auto"></audio>
     <audio id="somDesligar" src="sounds/desligar.mp3" preload="auto"></audio>
 
-    <script src="script.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 
 </html>
