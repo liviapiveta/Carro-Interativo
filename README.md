@@ -54,13 +54,11 @@ Para executar este projeto em sua máquina local, siga estas etapas:
 1.  **Clone o repositório (se ainda não o fez):**
     ```bash
     git clone https://github.com/liviapiveta/Carro-Interativo.git 
-    # Substitua pela URL correta do seu repositório se for diferente
     ```
 
 2.  **Navegue até o diretório do projeto:**
     ```bash
     cd Carro-Interativo 
-    # Ou o nome do diretório do seu projeto
     ```
 
 3.  **Abra o arquivo `index.html` no seu navegador:**
