@@ -1,109 +1,65 @@
-# Garagem Inteligente 🚗💨 v2.0
+# Garagem Inteligente 🚗💨
 
 ## Visão Geral
 
-Bem-vindo à Garagem Inteligente! Esta é uma aplicação web front-end que simula o gerenciamento de uma garagem de veículos. O projeto permite adicionar diferentes tipos de veículos (carros base, carros esportivos, caminhões), interagir com eles (ligar, acelerar, usar funcionalidades específicas como turbo ou carga) e gerenciar um histórico detalhado de manutenções.
-
-Construída com HTML, CSS e JavaScript puro, a aplicação enfatiza princípios de Programação Orientada a Objetos (POO) e utiliza Módulos ES6 para uma estrutura de código organizada, modular e escalável. Os dados da garagem são persistidos localmente no navegador usando `LocalStorage`.
+Bem-vindo ao projeto Garagem Inteligente! Esta é uma aplicação web front-end desenvolvida para simular o gerenciamento de veículos em uma garagem. O projeto permite adicionar diferentes tipos de veículos (carros, motos, caminhões), registrar informações sobre eles e gerenciar registros de manutenção. A aplicação foi construída utilizando HTML, CSS e JavaScript puro, com forte ênfase em princípios de Programação Orientada a Objetos (POO) para uma estrutura de código organizada e escalável. Os dados são persistidos localmente no navegador usando `LocalStorage`.
 
 Este projeto também serviu como um exercício prático para refatoração de código, separando classes em módulos JavaScript distintos, e aprofundamento no entendimento do código com auxílio de ferramentas de IA (como o Google AI Studio) e documentação detalhada usando JSDoc.
 
 ## ✨ Funcionalidades Principais
 
-*   **Adicionar Veículos:**
-    *   Permite adicionar diferentes tipos de veículos: Carro Base, Carro Esportivo e Caminhão.
-    *   Formulário dinâmico com campos específicos por tipo (ex: capacidade de carga para Caminhão).
-    *   Geração automática de ID único (UUID) para cada veículo.
-*   **Visualizar Garagem:**
-    *   Lista todos os veículos adicionados, exibindo modelo, cor e um ícone distintivo por tipo.
-    *   Ordenação alfabética dos veículos na lista.
-*   **Detalhes Interativos do Veículo:**
-    *   Exibe informações detalhadas e específicas para o tipo de veículo selecionado (demonstrando polimorfismo).
-    *   Mostra uma imagem representativa do tipo de veículo.
-    *   Status dinâmico: Ligado/Desligado e Velocidade atual com barra de progresso.
-    *   **Ações Comuns:**
-        *   Ligar e Desligar o veículo (com validação de estado, ex: não desligar em movimento).
-        *   Acelerar (com incremento de velocidade) e Frear (com decremento).
-        *   Buzinar.
-        *   Efeitos sonoros para a maioria das interações.
-    *   **Ações Específicas por Tipo:**
-        *   **Carro Esportivo:** Ativar e Desativar o modo Turbo (altera velocidade máxima e aceleração).
-        *   **Caminhão:** Carregar e Descarregar carga (com validação de capacidade e estado do veículo).
-*   **Gerenciamento Avançado de Manutenção:**
-    *   Permite adicionar registros de manutenção (status "Realizada") ou agendar futuras manutenções (status "Agendada").
-    *   Formulário dedicado com validação de dados (data, tipo de serviço, custo obrigatório para manutenções realizadas, descrição opcional).
-    *   Visualização do histórico de manutenções já realizadas.
-    *   Visualização de agendamentos futuros e também de agendamentos passados que não foram marcados como realizados.
-    *   Ordenação cronológica das manutenções e agendamentos.
-    *   **Alertas de Agendamento:** O sistema exibe lembretes para manutenções agendadas para "Hoje" ou "Amanhã".
-*   **Polimorfismo em Ação:**
-    *   Métodos como `exibirInformacoesDetalhes()`, `acelerar()`, e a lógica de reconstrução de objetos `fromData()` se comportam de maneira diferente dependendo da classe do veículo (Carro, CarroEsportivo, Caminhao).
-*   **Persistência de Dados:**
-    *   Salva e carrega o estado completo da garagem (veículos, seus estados atuais como ligado/desligado, velocidade, carga, turbo, e todo o histórico de manutenção) utilizando o `LocalStorage` do navegador.
-    *   Reconstrução inteligente das instâncias de objetos (Veículos e Manutenções) ao carregar os dados.
-*   **Interface de Usuário Intuitiva:**
-    *   Navegação clara entre as seções: "Minha Garagem", "Adicionar Veículo" e "Detalhes do Veículo".
-    *   Feedback visual ao usuário através de mensagens de status globais e em formulários.
-*   **Utilitários Dedicados:**
-    *   Funções auxiliares para geração de UUIDs, reprodução de sons e conversão/validação de datas no formato brasileiro.
+*   **Adicionar Veículos:** Permite adicionar diferentes tipos de veículos (Carro, Moto, Caminhão) com suas propriedades específicas.
+*   **Visualizar Garagem:** Lista todos os veículos atualmente na garagem.
+*   **Detalhes do Veículo:** Exibe informações detalhadas de um veículo selecionado.
+*   **Gerenciamento de Manutenção:** Permite adicionar e visualizar registros de manutenção para cada veículo.
+*   **Polimorfismo:** Demonstra o uso de polimorfismo através de métodos comuns (`interagir`) que se comportam de maneira diferente dependendo do tipo de veículo.
+*   **Persistência de Dados:** Salva e carrega o estado da garagem utilizando o `LocalStorage` do navegador.
+*   **Interface Interativa:** UI simples e funcional para interagir com a garagem.
 
 ## 🚀 Como Executar Localmente
 
 Para executar este projeto em sua máquina local, siga estas etapas:
 
-1.  **Clone o repositório (se ainda não o fez):**
+1.  **Clone o repositório:**
     ```bash
-    git clone https://github.com/liviapiveta/Carro-Interativo.git 
+    [git clone https://github.com/seu-usuario/garagem-inteligente.git](https://github.com/liviapiveta/Carro-Interativo/tree/main)
     ```
 
 2.  **Navegue até o diretório do projeto:**
     ```bash
-    cd Carro-Interativo 
+    cd garagem-inteligente
     ```
 
 3.  **Abra o arquivo `index.html` no seu navegador:**
     *   Você pode simplesmente dar um duplo clique no arquivo `index.html`.
-    *   **Recomendado:** Devido ao uso de Módulos ES6 (`import`/`export`), é melhor executar o projeto usando um servidor web local para evitar problemas com o protocolo `file://`. Uma maneira fácil é usar a extensão "Live Server" no Visual Studio Code:
-        1.  Instale a extensão "Live Server" no VS Code.
-        2.  Clique com o botão direito no arquivo `index.html` dentro do VS Code.
-        3.  Selecione "Open with Live Server".
+    *   Ou, se preferir (ou se encontrar problemas com módulos ES6 via `file://`), use uma extensão de servidor local como o "Live Server" no VS Code (clique com o botão direito no `index.html` e escolha "Open with Live Server").
 
-Não há dependências externas complexas ou processos de build necessários.
+Não há dependências externas ou processos de build complexos necessários.
 
 ## 📂 Estrutura do Projeto
 
 O projeto está organizado da seguinte forma, visando a separação de responsabilidades e a modularidade:
 
-*   **`index.html`**: Contém a estrutura HTML da página e importa os scripts e estilos.
+
+*   **`index.html`**: Contém a estrutura básica da página e importa os scripts necessários.
 *   **`css/style.css`**: Define a aparência visual da aplicação.
-*   **`js/main.js`**: Orquestra a aplicação, gerencia o estado global, lida com eventos da UI, interage com as classes de veículos e gerencia a persistência de dados.
-*   **`js/utils.js`**: Contém funções utilitárias gerais (geração de UUID, reprodução de som, parse de data).
-*   **`js/classes/`**: Contém as definições das classes JavaScript (POO), cada uma em seu próprio arquivo:
-    *   `Carro.js` (Classe base para veículos)
-    *   `CarroEsportivo.js` (Herda de Carro)
-    *   `Caminhao.js` (Herda de Carro)
-    *   `Manutencao.js` (Classe para registros de manutenção)
-*   **`sounds/`**: Armazena os arquivos de áudio para os efeitos sonoros (ex: `buzina.mp3`, `acelerar.mp3`).
-*   **`imagens/`**: Contém as imagens dos veículos (ex: `carro.png`, `esportivo.png`, `caminhao.png`).
-*   **`README.md`**: Este arquivo.
+*   **`js/classes/`**: Contém as definições das classes JavaScript (POO), cada uma em seu próprio arquivo para melhor organização. A ordem de importação no `index.html` é importante (classes base antes das derivadas).
+*   **`js/utils/`**: (Opcional) Pode conter funções auxiliares reutilizáveis, como as de manipulação do `LocalStorage`.
+*   **`js/main.js`**: Orquestra a aplicação, lida com eventos da interface do usuário (cliques de botão, envios de formulário), instancia objetos das classes definidas e atualiza a UI.
 
 ## 🛠️ Tecnologias Utilizadas
 
 *   **HTML5:** Para a estrutura semântica da página web.
 *   **CSS3:** Para estilização e layout da interface.
-*   **JavaScript (ES6+):** Para toda a lógica da aplicação, manipulação do DOM e implementação da Programação Orientada a Objetos.
-    *   **POO:** Classes (`Carro`, `CarroEsportivo`, `Caminhao`, `Manutencao`), Herança, Polimorfismo, Encapsulamento.
+*   **JavaScript (ES6+):** Para a lógica da aplicação, manipulação do DOM e implementação da Programação Orientada a Objetos (POO).
+    *   **POO:** Classes, Herança, Polimorfismo, Encapsulamento.
     *   **Módulos ES6:** Utilizados para organizar o código JavaScript em arquivos separados (`import`/`export`).
-    *   **Manipulação do DOM:** Para interagir e atualizar dinamicamente o conteúdo da página.
-    *   **Manipulação de Eventos:** Para responder às interações do usuário.
-    *   **`localStorage` API:** Para persistência de dados no navegador do usuário.
-    *   **`Audio` API:** Para reprodução de efeitos sonoros.
-    *   **`Crypto API`:** Utilizada para geração de UUIDs (`crypto.randomUUID()`) de forma segura.
+*   **LocalStorage API:** Para persistência de dados no navegador do usuário.
 *   **JSDoc:** Para documentação do código fonte JavaScript, facilitando o entendimento e a manutenção.
 
 ## 📖 Documentação do Código (JSDoc)
 
-Com o objetivo de melhorar a compreensão e a manutenção do código, utilizamos a ferramenta de IA Google AI Studio para analisar blocos complexos e, com base nesse entendimento aprofundado, adicionamos comentários de documentação no formato [JSDoc](https://jsdoc.app/) diretamente no código-fonte (arquivos `.js`).
+Com o objetivo de melhorar a compreensão e a manutenção do código, utilizamos a ferramenta de IA Google AI Studio para analisar blocos complexos e, com base nesse entendimento aprofundado, adicionamos comentários de documentação no formato [JSDoc](https://jsdoc.app/) diretamente no código-fonte (`.js` files).
 
 *   **Classes:** Cada classe possui um bloco JSDoc descrevendo seu propósito geral.
 *   **Métodos e Construtores:** Cada método, incluindo o construtor, é documentado com sua descrição, parâmetros (`@param`) e valor de retorno (`@returns`), quando aplicável.
@@ -120,6 +76,12 @@ Contribuições são bem-vindas! Se você tiver sugestões de melhorias ou corre
 4.  Push para a Branch (`git push origin feature/AmazingFeature`).
 5.  Abra um Pull Request.
 
+## 📄 Licença (Opcional)
+
+Este projeto está licenciado sob a Licença MIT - veja o arquivo `LICENSE` (se existir) para detalhes.
+
 ## 👤 Autor
 
 *   **Livia Piveta Baessa** - liviabaessa09@gmail.com
+
+---
